@@ -81,12 +81,16 @@
             transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
             animation: slideInUp 1s ease-out 0.4s both;
+            text-decoration: none;
+            display: inline-block;
+            pointer-events: auto;
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
             color: white;
+            text-decoration: none;
         }
 
         .section-card {
@@ -230,6 +234,7 @@
             margin: 3rem 0;
             position: relative;
             overflow: hidden;
+            z-index: 1; /* Add z-index */
         }
 
         .join-section::before {
@@ -241,6 +246,8 @@
             height: 200%;
             background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
             animation: pulse 4s ease-in-out infinite;
+            z-index: 0; /* Add z-index */
+            pointer-events: none; /* Prevent interference with buttons */
         }
 
         .join-title {
@@ -248,37 +255,15 @@
             font-weight: 800;
             margin-bottom: 1rem;
             position: relative;
+            z-index: 2; /* Ensure text is above the pseudo-element */
+        }
+
+        /* Add this new style to ensure buttons in join-section are clickable */
+        .join-section .btn {
+            position: relative;
             z-index: 2;
         }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(45, 46, 63, 0.4);
-            border-radius: 15px;
-            border: 1px solid rgba(99, 102, 241, 0.2);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--accent-color);
-            display: block;
-        }
-
-        .stat-label {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-        }
-
+        
         @keyframes slideInUp {
             from {
                 opacity: 0;
@@ -298,6 +283,53 @@
         @keyframes pulse {
             0%, 100% { opacity: 0.3; }
             50% { opacity: 0.6; }
+        }
+
+        /* Add inside the <style> tag */
+        .community-visuals {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .visual-circle {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .visual-circle:nth-child(1) { animation-delay: 0s; }
+        .visual-circle:nth-child(2) { animation-delay: 2s; }
+        .visual-circle:nth-child(3) { animation-delay: 4s; }
+
+        .ripple-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            border: 2px solid var(--accent-color);
+            animation: ripple 2s linear infinite;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
         }
 
         @media (max-width: 768px) {
@@ -339,21 +371,25 @@
         <div class="container">
             <div class="row align-items-center hero-content">
                 <div class="col-lg-8">
-                    <h1 class="hero-title">Welcome to Spaceholderz.com!</h1>
+                    <h1 class="hero-title">Welcome to Spaceholderz!</h1>
                     <p class="hero-subtitle">A distributed mental health community empowering young adults to create meaningful support through peer coaching and connection.</p>
-                    <button class="btn cta-button" onclick="scrollToSection('join')">
+                    <a href="https://chat.whatsapp.com/Cc3OBxh6l13KJRI5g2mneH" class="btn cta-button" target="_blank">
                         <i class="bi bi-rocket-takeoff me-2"></i>Join the Movement
-                    </button>
+                    </a>
                 </div>
                 <div class="col-lg-4 text-center">
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <span class="stat-number" id="member-count">1,247</span>
-                            <div class="stat-label">Active Members</div>
+                    <div class="community-visuals">
+                        <div class="visual-circle">
+                            <i class="bi bi-hearts fs-1"></i>
+                            <div class="ripple-effect"></div>
                         </div>
-                        <div class="stat-card">
-                            <span class="stat-number">11-23</span>
-                            <div class="stat-label">Age Range</div>
+                        <div class="visual-circle">
+                            <i class="bi bi-people fs-1"></i>
+                            <div class="ripple-effect"></div>
+                        </div>
+                        <div class="visual-circle">
+                            <i class="bi bi-stars fs-1"></i>
+                            <div class="ripple-effect"></div>
                         </div>
                     </div>
                 </div>
@@ -396,7 +432,7 @@
                 <div class="col-md-4">
                     <div class="outcome-item">
                         <i class="bi bi-brain me-2 text-info"></i>
-                        <span class="highlight">Evidence-based practices</span> (such as NVC, mindfulness)
+                        <span class="highlight">Proven practices</span> (NVC, mindfulness)
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -454,7 +490,7 @@
                 <div class="col-lg-4">
                     <div class="outcome-item">
                         <i class="bi bi-heart me-2"></i>
-                        <span class="highlight">Acceptance</span> - respect or unconditional positive regard
+                        <span class="highlight">Acceptance</span> - understanding, respect and unconditional positive regard
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -556,9 +592,9 @@
         <div class="join-section" id="join">
             <h2 class="join-title">Join the Movement, Be a Spaceholder!</h2>
             <p class="lead mb-4">Ready to become part of a community that's revolutionizing mental health support? Join thousands of young adults who are making a difference.</p>
-            <button class="btn btn-light btn-lg px-5 py-3" onclick="showJoinForm()">
+            <a href="https://chat.whatsapp.com/Cc3OBxh6l13KJRI5g2mneH" class="btn btn-light btn-lg px-5 py-3" target="_blank">
                 <i class="bi bi-star me-2"></i>Get Started Today
-            </button>
+            </a>
         </div>
     </div>
 
@@ -577,34 +613,8 @@
             });
         }
 
-        // Animated counter for member count
-        function animateCounter() {
-            const counter = document.getElementById('member-count');
-            const target = 1247;
-            let current = 0;
-            const increment = target / 100;
-            
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-                counter.textContent = Math.floor(current).toLocaleString();
-            }, 30);
-        }
-
-        // Show join form (placeholder)
-        function showJoinForm() {
-            alert('Welcome to Spaceholderz! 🌟\n\nThis would typically open a registration form or redirect to a signup page. For now, this demonstrates the interactive functionality of the website.');
-        }
-
         // Initialize animations when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            // Start counter animation after a delay
-            setTimeout(animateCounter, 1000);
-            
-            // Add scroll animations to cards
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
@@ -623,6 +633,6 @@
                 observer.observe(card);
             });
         });
-    </script>
+    </script>       
 </body>
 </html>
