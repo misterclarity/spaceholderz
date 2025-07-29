@@ -57,10 +57,8 @@
         .hero-title {
             font-size: 3.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            /* FIX: Removed gradient text properties and set a solid color for visibility. */
+            color: var(--accent-color);
             margin-bottom: 1.5rem;
             animation: slideInUp 1s ease-out;
         }
@@ -206,10 +204,12 @@
         .navbar-brand {
             font-weight: 800;
             font-size: 1.5rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            /* FIX: Removed gradient text properties and set a solid color for visibility. */
+            color: var(--text-light);
+        }
+        
+        .navbar-brand:hover {
+            color: var(--accent-color);
         }
 
         .nav-link {
@@ -312,14 +312,12 @@
     </style>
 </head>
 <body>
-    <!-- Floating Background Elements -->
     <div class="floating-elements">
         <div class="floating-circle"></div>
         <div class="floating-circle"></div>
         <div class="floating-circle"></div>
     </div>
 
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#"><i class="bi bi-star-fill me-2"></i>Spaceholderz</a>
@@ -337,7 +335,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
             <div class="row align-items-center hero-content">
@@ -365,7 +362,6 @@
     </section>
 
     <div class="container mt-5 pt-5">
-        <!-- Who We Are Section -->
         <div class="section-card" id="about">
             <h2 class="section-title">
                 <div class="section-icon"><i class="bi bi-people-fill"></i></div>
@@ -374,7 +370,6 @@
             <p>Spaceholderz.com is a <span class="highlight">distributed mental health community</span>. We empower members to <span class="highlight">create and provide meaningful support to one another</span> through <span class="highlight">coaching skills</span>. Our community forms a <span class="highlight">network of trained peer supporters</span> who can offer <span class="highlight">contextually relevant help</span> when needed. Our members are primarily <span class="highlight">young adults between 11 and 23 years old</span>.</p>
         </div>
 
-        <!-- Our Philosophy Section -->
         <div class="section-card" id="philosophy">
             <h2 class="section-title">
                 <div class="section-icon"><i class="bi bi-lightbulb-fill"></i></div>
@@ -385,7 +380,6 @@
             <p>We call this <span class="highlight">swarm healing</span>.</p>
         </div>
 
-        <!-- How Spaceholding Works Section -->
         <div class="section-card">
             <h2 class="section-title">
                 <div class="section-icon"><i class="bi bi-gear-fill"></i></div>
@@ -414,167 +408,160 @@
             </div>
         </div>
 
-        <!-- Skills We Learn Section -->
         <div class="section-card" id="skills">
             <h2 class="section-title">
-                <div class="section-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div class="section-icon"><i class="bi bi-mortarboard"></i></div>
                 Skills We Learn
             </h2>
             <p>Spaceholderz learn fundamental coaching skills, including:</p>
             <div class="row">
                 <div class="col-md-6">
                     <div class="skill-item">
-                        <i class="fas fa-ear-listen me-2"></i>
+                        <i class="bi bi-ear me-2"></i>
                         <span class="highlight">Reflective listening</span>
                     </div>
                     <div class="skill-item">
-                        <i class="fas fa-question-circle me-2"></i>
+                        <i class="bi bi-question-circle me-2"></i>
                         <span class="highlight">Asking clarifying questions</span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="skill-item">
-                        <i class="fas fa-meditation me-2"></i>
+                        <i class="bi bi-peace me-2"></i>
                         <span class="highlight">Maintaining mindful presence</span>
                     </div>
                     <div class="skill-item">
-                        <i class="fas fa-shield-alt me-2"></i>
+                        <i class="bi bi-shield-check me-2"></i>
                         <span class="highlight">Facilitating safe spaces</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Outcomes Section -->
         <div class="section-card">
             <h2 class="section-title">
-                <div class="section-icon"><i class="fas fa-target"></i></div>
+                <div class="section-icon"><i class="bi bi-bullseye"></i></div>
                 Outcomes of Spaceholding
             </h2>
             <p>Through our approach, we foster key outcomes:</p>
             <div class="row">
                 <div class="col-lg-4">
                     <div class="outcome-item">
-                        <i class="fas fa-gem me-2"></i>
+                        <i class="bi bi-gem me-2"></i>
                         <span class="highlight">Congruence</span> - realness, genuineness, transparency, authenticity, openness
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="outcome-item">
-                        <i class="fas fa-heart me-2"></i>
+                        <i class="bi bi-heart me-2"></i>
                         <span class="highlight">Acceptance</span> - respect or unconditional positive regard
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="outcome-item">
-                        <i class="fas fa-eye me-2"></i>
+                        <i class="bi bi-eye me-2"></i>
                         <span class="highlight">Empathic understanding</span> - deep understanding for feelings and meanings
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Benefits Section -->
         <div class="section-card">
             <h2 class="section-title">
-                <div class="section-icon"><i class="fas fa-arrow-up"></i></div>
+                <div class="section-icon"><i class="bi bi-arrow-up-circle"></i></div>
                 Benefits of Our Approach
             </h2>
             <p>This approach helps to:</p>
             <div class="row">
                 <div class="col-md-6">
                     <div class="benefit-item">
-                        <i class="fas fa-shield me-2"></i>
+                        <i class="bi bi-shield me-2"></i>
                         <span class="highlight">Enhance community resilience</span>
                     </div>
                     <div class="benefit-item">
-                        <i class="fas fa-user-friends me-2"></i>
+                        <i class="bi bi-people me-2"></i>
                         <span class="highlight">Reduce social isolation</span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="benefit-item">
-                        <i class="fas fa-smile me-2"></i>
+                        <i class="bi bi-emoji-smile me-2"></i>
                         <span class="highlight">Improve mental well-being</span>
                     </div>
                     <div class="benefit-item">
-                        <i class="fas fa-link me-2"></i>
+                        <i class="bi bi-link-45deg me-2"></i>
                         <span class="highlight">Create authentic connections</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Establishing Spaceholding Section -->
         <div class="section-card">
             <h2 class="section-title">
-                <div class="section-icon"><i class="fas fa-rocket"></i></div>
+                <div class="section-icon"><i class="bi bi-rocket"></i></div>
                 Establishing Spaceholding
             </h2>
             <p>Key steps to establish Spaceholding include:</p>
             <div class="row">
                 <div class="col-md-4">
                     <div class="outcome-item text-center">
-                        <i class="fas fa-chalkboard-teacher fa-2x mb-2 d-block"></i>
+                        <i class="bi bi-easel2 fa-2x mb-2 d-block"></i>
                         <span class="highlight">Train members</span>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="outcome-item text-center">
-                        <i class="fas fa-users fa-2x mb-2 d-block"></i>
+                        <i class="bi bi-people-fill fa-2x mb-2 d-block"></i>
                         <span class="highlight">Pair and group practice</span>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="outcome-item text-center">
-                        <i class="fas fa-book-open fa-2x mb-2 d-block"></i>
+                        <i class="bi bi-book fa-2x mb-2 d-block"></i>
                         <span class="highlight">Ongoing learning</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Important Notes Section -->
         <div class="section-card">
             <h2 class="section-title">
-                <div class="section-icon"><i class="fas fa-info-circle"></i></div>
+                <div class="section-icon"><i class="bi bi-info-circle"></i></div>
                 Important Notes About Spaceholding
             </h2>
             <div class="row">
                 <div class="col-md-6">
                     <div class="benefit-item">
-                        <i class="fas fa-plus me-2"></i>
+                        <i class="bi bi-plus-circle me-2"></i>
                         It <span class="highlight">complements existing services</span>
                     </div>
                     <div class="benefit-item">
-                        <i class="fas fa-laugh me-2"></i>
+                        <i class="bi bi-emoji-laughing me-2"></i>
                         It's <span class="highlight">fun and distributed</span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="benefit-item">
-                        <i class="fas fa-adjust me-2"></i>
+                        <i class="bi bi-yin-yang me-2"></i>
                         It's <span class="highlight">adaptable to individual needs</span>
                     </div>
                     <div class="benefit-item">
-                        <i class="fas fa-hands-helping me-2"></i>
+                        <i class="bi bi-hand-thumbs-up me-2"></i>
                         It <span class="highlight">increases community cohesion</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Join Section -->
         <div class="join-section" id="join">
             <h2 class="join-title">Join the Movement, Be a Spaceholder!</h2>
             <p class="lead mb-4">Ready to become part of a community that's revolutionizing mental health support? Join thousands of young adults who are making a difference.</p>
             <button class="btn btn-light btn-lg px-5 py-3" onclick="showJoinForm()">
-                <i class="fas fa-star me-2"></i>Get Started Today
+                <i class="bi bi-star me-2"></i>Get Started Today
             </button>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="text-center py-4 mt-5" style="border-top: 1px solid rgba(99, 102, 241, 0.2);">
         <div class="container">
             <p class="mb-0 text-muted">&copy; 2025 Spaceholderz.com - Empowering communities through peer support</p>
