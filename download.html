@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Your Guide | Astrology 101</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <style>
+        .download-container {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a2035 0%, #0f111a 100%);
+        }
+
+        .download-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 4rem;
+            border-radius: 20px;
+            border: 1px solid var(--accent-gold);
+            backdrop-filter: blur(10px);
+            max-width: 500px;
+        }
+
+        .download-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="download-container">
+        <div class="download-card fade-in">
+            <span class="download-icon">✨</span>
+            <h1>Thank You!</h1>
+            <p>Your email has been confirmed. Your guide, <strong>"Astrology 101: A Practical Primer"</strong>, should
+                be downloading automatically.</p>
+            <p>If it doesn't start, click the button below:</p>
+            <a href="static/Astrology 101_Practical Primer.pdf" download class="btn btn-primary"
+                id="manualDownload">Download PDF</a>
+            <div style="margin-top: 2rem;">
+                <a href="index.html" style="color: var(--accent-gold); font-size: 0.9rem;">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Automatically trigger the download
+        window.onload = function () {
+            setTimeout(() => {
+                document.getElementById('manualDownload').click();
+            }, 1000);
+        };
+    </script>
+</body>
+
+</html>
