@@ -77,24 +77,24 @@
     <section class="quotes-section">
         <div class="container">
             <div class="quotes-grid">
-                <div class="quote-card">
+                <!-- <div class="quote-card">
                     <blockquote>"As above, so below."</blockquote>
                     <cite>— The Emerald Tablet</cite>
-                </div>
+                </div> -->
                 <div class="quote-card">
                     <blockquote>"What the best astrology does, of course, is unshackle you from fear, arm you with
                         self-knowledge, help you to feel at one with the great, pulsing universe — set you free."
                     </blockquote>
                     <cite></cite>
                 </div>
-                <div class="quote-card">
+                <!-- <div class="quote-card">
                     <blockquote>"I don't believe in astrology; I'm a Sagittarius and we're skeptical."</blockquote>
                     <cite>— Arthur C. Clarke</cite>
                 </div>
                 <div class="quote-card">
                     <blockquote>"It is better to know how to learn, than to know."</blockquote>
                     <cite></cite>
-                </div>
+                </div> -->
 
             </div>
         </div>
@@ -134,6 +134,9 @@
             </div>
         </div>
     </section>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
     <footer>
         <div class="container">
@@ -218,6 +221,45 @@
                 }
             });
         }
+
+        // Back to Top Button with Custom Smooth Scroll
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        // Custom smooth scroll function for slower, more controlled animation
+        function smoothScrollToTop(duration = 1500) {
+            const startPosition = window.pageYOffset;
+            const startTime = performance.now();
+
+            function easeInOutCubic(t) {
+                return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+            }
+
+            function animation(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easing = easeInOutCubic(progress);
+
+                window.scrollTo(0, startPosition * (1 - easing));
+
+                if (progress < 1) {
+                    requestAnimationFrame(animation);
+                }
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+        backToTopBtn.addEventListener('click', () => {
+            smoothScrollToTop(1500); // 1.5 seconds duration
+        });
     </script>
 </body>
 
