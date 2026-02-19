@@ -578,130 +578,249 @@ footer {
     animation: fadeIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
+/* ===== Hamburger Menu Button (hidden on desktop) ===== */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 200;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hamburger span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: var(--text-light);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ===== Mobile Responsive — max-width: 768px ===== */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 3rem;
+
+    /* --- Global --- */
+    body {
+        font-size: 16px;
     }
 
+    .container {
+        padding: 0 1rem;
+    }
+
+    /* --- Typography --- */
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    /* --- Navigation / Hamburger --- */
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(5, 6, 8, 0.97);
+        backdrop-filter: blur(20px);
+        padding: 2rem 1.5rem;
+        gap: 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links a:not(.btn) {
+        font-size: 1rem;
+        padding: 0.5rem 0;
+    }
+
+    .nav-links .btn {
+        text-align: center;
+        width: 100%;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+    }
+
+    nav {
+        position: relative;
+    }
+
+    /* --- Hero --- */
     .hero {
         height: auto;
-        padding: 8rem 0;
+        padding: 7rem 0 4rem;
+    }
+
+    .hero-content {
+        padding: 2rem 1rem;
+    }
+
+    .subtitle {
+        font-size: 1.3rem;
+    }
+
+    /* --- Philosophy --- */
+    .philosophy {
+        padding: 4rem 0;
     }
 
     .philosophy p {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
-}
 
-/* Quotes Section */
-.quotes-section {
-    padding: 8rem 0;
-    position: relative;
-    background: radial-gradient(circle at bottom left, #1a1e2e 0%, #050608 60%);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
+    /* --- Curriculum / Modules Grid --- */
+    .curriculum {
+        padding: 4rem 0;
+    }
 
-.quotes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
-    align-items: start;
-}
+    .modules-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 3rem;
+    }
 
-.quote-card {
-    background: transparent;
-    padding: 2rem;
-    text-align: center;
-    position: relative;
-    transition: transform 0.4s ease;
-}
+    .module-card {
+        min-height: 220px;
+        padding: 2.5rem 1.5rem;
+    }
 
-.quote-card:hover {
-    transform: translateY(-5px);
-}
+    .module-number {
+        font-size: 5rem;
+    }
 
-.quote-card blockquote {
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
-    line-height: 1.6;
-    color: var(--text-light);
-    margin-bottom: 1.5rem;
-    font-style: italic;
-    position: relative;
-    z-index: 2;
-}
-
-.quote-card blockquote::before {
-    content: '“';
-    font-size: 8rem;
-    color: var(--accent-gold);
-    opacity: 0.1;
-    position: absolute;
-    top: -4rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: serif;
-    z-index: -1;
-}
-
-.quote-card cite {
-    display: block;
-    font-family: var(--font-subheading);
-    font-size: 1rem;
-    color: var(--accent-gold);
-    font-style: normal;
-    letter-spacing: 0.05em;
-    opacity: 0.9;
-    margin-top: 1rem;
-}
-
-/* Back to Top Button */
-.back-to-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 50px;
-    height: 50px;
-    background: var(--bg-card);
-    border: var(--glass-border);
-    backdrop-filter: blur(20px);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.8) translateY(20px);
-    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-    z-index: 1000;
-    font-size: 1.5rem;
-    color: var(--accent-gold);
-}
-
-.back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1) translateY(0);
-}
-
-.back-to-top:hover {
-    background: var(--accent-gold);
-    color: var(--bg-dark);
-    transform: scale(1.1) translateY(-5px);
-    box-shadow: var(--shadow-glow);
-}
-
-.back-to-top:active {
-    transform: scale(0.95) translateY(-3px);
-}
-
-@media (max-width: 768px) {
+    /* --- Quotes --- */
     .quotes-section {
         padding: 4rem 0;
     }
 
+    .quotes-grid {
+        grid-template-columns: 1fr;
+    }
+
     .quote-card blockquote {
         font-size: 1.2rem;
+    }
+
+    .quote-card blockquote::before {
+        font-size: 5rem;
+        top: -2.5rem;
+    }
+
+    /* --- Services Overview Grid --- */
+    .services-overview {
+        padding: 4rem 0;
+        padding-top: 8rem !important;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .service-card {
+        min-height: auto;
+        padding: 2rem 1.5rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.3rem;
+    }
+
+    /* --- Service Detail Sections --- */
+    .services {
+        padding: 4rem 0;
+    }
+
+    .services-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .services-text {
+        min-width: 100%;
+    }
+
+    .services-text h3 {
+        font-size: 1.5rem;
+    }
+
+    .services-image {
+        min-width: 100%;
+    }
+
+    .highlight-mechanic {
+        padding: 1.2rem;
+        margin-top: 1.5rem;
+    }
+
+    .highlight-mechanic h4 {
+        font-size: 0.95rem;
+    }
+
+    /* --- Lead Magnet --- */
+    .lead-magnet {
+        padding: 4rem 0;
+    }
+
+    .lead-magnet-container {
+        padding: 0 0.5rem;
+    }
+
+    /* --- Download Page --- */
+    .download-card {
+        padding: 2rem 1.5rem !important;
+        margin: 0 1rem;
+    }
+
+    /* --- Footer --- */
+    footer {
+        padding: 2rem 0;
+        font-size: 0.7rem;
+    }
+
+    /* --- Back to Top (smaller on mobile) --- */
+    .back-to-top {
+        width: 44px;
+        height: 44px;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    /* --- Service Dividers --- */
+    .service-divider {
+        margin: 4rem 0 !important;
     }
 }

@@ -22,9 +22,15 @@
                     <a href="#free-guide" class="btn btn-primary"
                         style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Join Us</a>
                 </div>
+                <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </nav>
         </div>
     </header>
+
     <br>
     <section class="hero">
         <div class="container">
@@ -259,6 +265,23 @@
 
         backToTopBtn.addEventListener('click', () => {
             smoothScrollToTop(1500); // 1.5 seconds duration
+        });
+
+        // Hamburger Menu Toggle
+        const hamburgerBtn = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+
+        // Close menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                navLinks.classList.remove('open');
+            });
         });
     </script>
 </body>
